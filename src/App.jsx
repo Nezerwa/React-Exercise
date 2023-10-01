@@ -1,7 +1,10 @@
+import ButtonComponent from "./components/button";
 function App() {
  return (
-  <div>React exercises</div>
- )
+   <div>
+     <ButtonComponent />
+   </div>
+ );
 }
 
 export default App;

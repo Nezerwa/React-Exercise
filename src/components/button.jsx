@@ -5,7 +5,7 @@ function ButtonComponent(props) {
   return (
     <div>
       <button
-        className=" bg-gray-400 text-xl text-white rounded w-40"
+        className=" bg-gray-300 text-xl text-white rounded w-40"
         onClick={clickHandler}
       >
         Button {props.children}

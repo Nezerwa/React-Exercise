@@ -10,6 +10,10 @@ const MyForm = () => {
       };
     });
   };
+
+  const onclickhandler = () => {
+    alert(`Hello ${obj.firstName} ${obj.lastName}!`);
+  };
   return (
     <div className="flex flex-col h-[600px] justify-center items-center">
       <form className="flex flex-col gap-5">
@@ -27,7 +31,9 @@ const MyForm = () => {
           name="lastName"
           onChange={onchangeHandler}
         ></input>
-        <button className="bg-red-600 py-2 px-8">GREET ME</button>
+        <button className="bg-red-600 py-2 px-8" onClick={onclickhandler}>
+          GREET ME
+        </button>
       </form>
     </div>
   );

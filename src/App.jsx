@@ -1,10 +1,8 @@
-import ListComponent from "./component/ListComponent";
+import MyForm from "./components/MyForm";
 function App() {
-  const animal = [" 🐶dog", "😺 cat", "🐔 chicken", "🐮 cow", "🐑 sheep", "🐴 horse"];
-  console.log(animal)
   return (
     <div>
-      <ListComponent items={animal} />
+      <MyForm/>
     </div>
   );
 }

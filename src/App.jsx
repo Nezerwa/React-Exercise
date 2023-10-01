@@ -1,7 +1,10 @@
+import MyForm from "./components/MyForm";
 function App() {
- return (
-  <div>React exercises</div>
- )
+  return (
+    <div>
+      <MyForm/>
+    </div>
+  );
 }
 
 export default App;

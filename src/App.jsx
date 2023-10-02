@@ -12,9 +12,16 @@ function App() {
     return <Flip {...items} key={items.id} />;
   });
   return (
-    <div>
-      <div className="bg-green-200 w-[60%] mx-auto">
-        <div className="grid grid-cols-2 w-[60%]  gap-y-12 py-12 pl-10 gap-x-96">{cards}</div>
+    <div className="bg-white">
+      <div className="flex justify-center pb-10 pt-10">
+        <button className="bg-red-600 py-2 px-12 text-white">
+          Fetch Random
+        </button>
+      </div>
+      <div className="w-[80%]">
+        <div className="grid grid-cols-2 w-full  gap-y-12 py-12 pl-10 gap-x-10">
+          {cards}
+        </div>
       </div>
     </div>
   );

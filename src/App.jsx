@@ -4,12 +4,10 @@ import Flip from "./components/Flip";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    console.log("effect is running");
     fetch("https://random-data-api.com/api/users/random_user?size=10")
       .then((res) => res.json())
       .then((res) => setData(res));
   }, []);
-  console.log(data);
   const cards = data.map((items) => {
     return <Flip {...items} key={items.id} />;
   });

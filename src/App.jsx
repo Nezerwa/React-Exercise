@@ -1,12 +1,25 @@
-import Joke from "./components/Joke";
-import data from "./data";
+import { useEffect, useState } from "react";
+import Flip from "./components/Flip";
+
 function App() {
-const jokes = data.map((obj)=> <Joke key={obj.id} {...obj}/>)
- return (
-   <div className="bg-green-200 h-[500px] w-[60%] flex mx-auto mt-24">
-     <div className="h-[400px] flex gap-5 pt-32 pl-10">{jokes}</div>
-   </div>
- );
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    console.log("effect is running");
+    fetch("https://random-data-api.com/api/users/random_user?size=10")
+      .then((res) => res.json())
+      .then((res) => setData(res));
+  }, []);
+  console.log(data);
+  const cards = data.map((items) => {
+    return <Flip {...items} key={items.id} />;
+  });
+  return (
+    <div>
+      <div className="bg-green-200 w-[60%] mx-auto">
+        <div className="grid grid-cols-2 w-[60%]  gap-y-12 py-12 pl-10 gap-x-96">{cards}</div>
+      </div>
+    </div>
+  );
 }
 
 export default App;

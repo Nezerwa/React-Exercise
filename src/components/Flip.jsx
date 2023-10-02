@@ -9,7 +9,7 @@ function Flip({
 }) {
   return (
     <div class="flex min-h-screen items-center justify-center bg-green-200">
-      <div class="group h-96 w-80 [perspective:1000px]">
+      <div class="group h-96 w-80 [perspective:1000px] bg-white">
         <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
           <div class="absolute inset-0">
             <img

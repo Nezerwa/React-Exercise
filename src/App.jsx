@@ -19,7 +19,7 @@ function App() {
         </button>
       </div>
       <div className="w-[80%]">
-        <div className="grid grid-cols-2 w-full  gap-y-12 py-12 pl-10 gap-x-10">
+        <div className="grid grid-cols-2 w-full  gap-y-12 py-12 pl-10 gap-x-24 mx-32">
           {cards}
         </div>
       </div>

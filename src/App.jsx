@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaPlusCircle, FaTrash } from "react-icons/fa";
 import { connect } from "react-redux";
-import { addTodos, removeTodos } from "./redux/reducer";
+import { addTodos, removeTodos, toggleTodos } from "./redux/reducer";
 
 const myStateProps = (state) => {
   return {
@@ -13,13 +13,26 @@ const dispatchProps = (dispatch) => {
   return {
     addTodo: (obj) => dispatch(addTodos(obj)),
     removeTodo: (id) => dispatch(removeTodos(id)),
+    toggleTodo: (id) => dispatch(toggleTodos(id)),
   };
 };
 function App(props) {
-  const [Todo, SetTodo] = useState("")
+  const [Todo, SetTodo] = useState("");
+  const handleSubmit = (e) => {
+    if (Todo.trim() !== "") {
+      props.addTodo({
+        id: Math.floor(Math.random() * 1000),
+        item: Todo,
+        completed: false,
+      });
+      SetTodo("");
+    }
+    e.preventDefault();
+  };
   const handleChange = (e) => {
     SetTodo(e.target.value);
   };
+
   return (
     <div className="bg-white flex w-full h-screen flex-col">
       <header className="flex flex-col gap-4">
@@ -34,20 +47,7 @@ function App(props) {
             className="focus:outline-none text-2xl flex-1"
             onChange={handleChange}
           />
-          <button
-            type="button"
-            className="text-2xl"
-            onClick={() => {
-              if (Todo.trim() !== "") {
-                props.addTodo({
-                  id: Math.floor(Math.random() * 1000),
-                  item: Todo,
-                  completed: false,
-                });
-                SetTodo("");
-              }
-            }}
-          >
+          <button type="button" className="text-2xl" onClick={handleSubmit}>
             <FaPlusCircle className="text-green-700" />
           </button>
         </form>
@@ -58,7 +58,22 @@ function App(props) {
                 key={item.id}
                 className="mx-5 my-0 flex justify-between w-full border-b-2 mb-2"
               >
-                <span className="text-lg">{item.item} </span>
+                <input
+                  type="checkbox"
+                  checked={item.completed}
+                  onChange={() => {
+                    props.toggleTodo(item.id);
+                  }}
+                />
+                <span
+                  className={
+                    item.completed
+                      ? "line-through text-xl"
+                      : "no-underline text-xl"
+                  }
+                >
+                  {item.item}
+                </span>
                 <button
                   onClick={() => {
                     props.removeTodo(item.id);
